@@ -17,28 +17,17 @@ client = Bot(description="DarkBot Bot is best", command_prefix="d!", pm_help = T
 client.remove_command('help')
 
 
-async def status_task():
+@client.event
+async def on_ready():
     while True:
-        await client.change_presence(game=discord.Game(name='for d!help'))
+        await client.change_presence(game=discord.Game(name='for m!help'))
         await asyncio.sleep(5)
-        await client.change_presence(game=discord.Game(name='with '+str(len(set(client.get_all_members())))+' users'))
+        await client.change_presence(game=discord.Game(name='with users'))
         await asyncio.sleep(5)
-        await client.change_presence(game=discord.Game(name='in '+str(len(client.servers))+' servers'))
+        await client.change_presence(game=discord.Game(name='in your  servers'))
         await asyncio.sleep(5)
         
 
-	
-@client.event
-async def on_ready():
-    print('Logged in as '+client.user.name+' (ID:'+client.user.id+') | Connected to '+str(len(client.servers))+' servers | Connected to '+str(len(set(client.get_all_members())))+' users')
-    print('--------')
-    print('--------')
-    print('Started Dark BOT')
-    print('Created by Utkarsh')
-    client.loop.create_task(status_task())
-
-
-  
 	
 def is_owner(ctx):
     return ctx.message.author.id == "420525168381657090, 395535610548322326"
